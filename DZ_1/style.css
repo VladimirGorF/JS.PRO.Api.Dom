@@ -1,0 +1,23 @@
+
+.conteiner{
+    display: grid;
+    grid-template-columns: repeat(3,33%);
+}
+.lesson{
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.lesson:nth-child(even) {
+    background-color: aqua;
+}
+
+.lesson:nth-child(odd) {
+    background-color: aquamarine;
+}
+
+.title{
+    font: bold;
+    font-size: 25px;
+    
+}
