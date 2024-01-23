@@ -21,7 +21,7 @@ const audio = new Audio(
   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/clickUp.mp3"
 );
 
-let sliderElementsSourceList = [
+const sliderElementsSourceList = [
   "images/1.jpg",
   "images/2.jpg",
   "images/3.jpg",
