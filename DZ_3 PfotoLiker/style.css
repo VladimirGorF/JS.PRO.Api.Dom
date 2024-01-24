@@ -20,7 +20,7 @@ body {
 
 img {
     height: 200px;
-    width: 260px;
+    width: 256px;
     margin-bottom: 20px;
     cursor: pointer;
 }
@@ -65,4 +65,10 @@ img {
 
 .imageHistory {
     border: 1px solid;
+    height: 360px;
+    padding: 3px;
+}
+
+.imageHistory .icon {
+    height: 60px;
 }
