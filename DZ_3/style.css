@@ -1,0 +1,68 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.photoСontainer {
+    padding: 20px;
+
+}
+
+img {
+    height: 200px;
+    width: 260px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.author {
+    font-size: 20px;
+}
+
+.icon {
+    width: 100px;
+}
+
+.historyBox {
+    margin-left: 5px;
+    cursor: pointer;
+
+}
+
+.historyBox h4 {
+    margin-bottom: 10px;
+    border: 1px solid;
+    background-color: green;
+    width: 230px;
+    padding: 5px
+}
+
+.historyBox h4:hover {
+    margin-bottom: 10px;
+    border: 1px solid red;
+    background-color: aqua;
+    width: 230px;
+    padding: 5px
+}
+
+
+
+.contentHistory {
+    display: grid;
+    grid-template-columns: repeat(3, 33.3%);
+    gap: 5px;
+}
+
+.imageHistory {
+    border: 1px solid;
+}
