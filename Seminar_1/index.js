@@ -115,99 +115,102 @@
 // браузера, и должны быть доступны после перезагрузки
 // страницы.
 
-const initialJSON = `[{"id":1702889102621,"title":"Статья 1","text":"Text 1"},{"id":1702889103318,"title":"Статья 2","text":"Text 2"}]`;
+// const initialJSON = `[{"id":1702889102621,"title":"Статья 1","text":"Text 1"},{"id":1702889103318,"title":"Статья 2","text":"Text 2"}]`;
 
-const localStorageKey = "articles";
-const data = localStorage.getItem(localStorageKey);
+// const localStorageKey = "articles";
+// const data = localStorage.getItem(localStorageKey);
 
-if (!data) {
-  localStorage.setItem(localStorageKey, initialJSON);
-}
+// if (!data) {
+//   localStorage.setItem(localStorageKey, initialJSON);
+// }
 
-const articles = JSON.parse(localStorage.getItem(localStorageKey));
+// const articles = JSON.parse(localStorage.getItem(localStorageKey));
 
-// все статьи объединяем в одну строку
-const articlesHtml = articles
-  .map((article) => getArticleHtml(article))
-  .join("");
+// // все статьи объединяем в одну строку
+// const articlesHtml = articles
+//   .map((article) => getArticleHtml(article))
+//   .join("");
 
-const conteinerElement = document.querySelector(".conteiner");
+// const conteinerElement = document.querySelector(".conteiner");
 
-// добавляем все на страницу
-conteinerElement.innerHTML = articlesHtml;
+// // добавляем все на страницу
+// conteinerElement.innerHTML = articlesHtml;
 
-// возвращает нам статью как HTML код строкой для отражения на странице и записи в locStor
-function getArticleHtml(article) {
-  return `<div class="article" data-id="${article.id}">
-  <div class="title">${article.title}</div>
-  <p class="text">${article.text}</p>
-  <button class="delete">delete</button>
-  <button class="edit">edit</button>
-</div>`;
-}
+// // возвращает нам статью как HTML код строкой для отражения на странице и записи в locStor
+// function getArticleHtml(article) {
+//   return `<div class="article" data-id="${article.id}">
+//   <div class="title">${article.title}</div>
+//   <p class="text">${article.text}</p>
+//   <button class="delete">delete</button>
+//   <button class="edit">edit</button>
+// </div>`;
+// }
 
-// добавление статей
-const addButtonElement = document.querySelector(".add");
-addButtonElement.addEventListener("click", function () {
-  const title = prompt("Введите заголовок статьи");
-  const text = prompt("Введите текст статьи");
+// // добавление статей
+// const addButtonElement = document.querySelector(".add");
+// addButtonElement.addEventListener("click", function () {
+//   const title = prompt("Введите заголовок статьи");
+//   const text = prompt("Введите текст статьи");
 
-  const article = {
-    id: Date.now(), // id берем из TimeStamp
-    title, // title: title
-    text, // text: text
-  };
-  articles.push(article);
-  localStorage.setItem(localStorageKey, JSON.stringify(articles));
+//   const article = {
+//     id: Date.now(), // id берем из TimeStamp
+//     title, // title: title
+//     text, // text: text
+//   };
+//   articles.push(article);
+//   localStorage.setItem(localStorageKey, JSON.stringify(articles));
 
-  conteinerElement.insertAdjacentHTML("beforeend", getArticleHtml(article));
-});
-
-// Изменение статей
-const changeButtonElement = document.querySelector(".edit");
-changeButtonElement.addEventListener("click", function (event) {
-  // ищем статью через ближайший .article
-  const parentElement = event.target.closest(".article");
-
-  // ищем статью в массиве
-  const id = +parentElement.dataset.id;
-  const indexArticle = articles.findIndex((article) => article.id === id);
-  let article = articles[indexArticle];
-
-  //Вводим название и текст статьи с проверкой на пустоту
-  const title = prompt("Введите заголовок статьи");
-  while (!title) {
-    title = prompt("Введите заголовок статьи");
-  }
-  const text = prompt("Введите текст статьи");
-  while (!title || !text) {
-    text = prompt("Введите текст статьи");
-  }
-
-  // меняем статью в массиве на наши введенные ранее заголовок и текст
-  article.title = title;
-  article.text = text;
-
-  // меняем в массиве бывшую статью на новую
-  articles[indexArticle] = article;
-  // обновляем хранилище
-  localStorage.setItem(localStorageKey, JSON.stringify(articles));
-  //  теперь надо в Parent elemen(наша статья в html) внести иземения в текст
 //   conteinerElement.insertAdjacentHTML("beforeend", getArticleHtml(article));
-  parentElement.innerHTML = getArticleHtml(article);
-});
+// });
 
-// удаление статей
-conteinerElement.addEventListener("click", function (event) {
-  if (!event.target.classList.contains("delete")) {
-    return;
-  }
+// // Изменение статей
+// const changeButtonElement = document.querySelector(".edit");
+// changeButtonElement.addEventListener("click", function (event) {
+//   // ищем статью через ближайший .article
+//   const parentElement = event.target.closest(".article");
 
-  const parentElement = event.target.closest(".article");
-  const id = +parentElement.dataset.id;
-  const indexArticle = articles.findIndex((article) => article.id === id);
-  articles.splice(indexArticle, 1);
+//   // ищем статью в массиве
+//   const id = +parentElement.dataset.id;
+//   const indexArticle = articles.findIndex((article) => article.id === id);
+//   let article = articles[indexArticle];
 
-  localStorage.setItem(localStorageKey, JSON.stringify(articles));
-  parentElement.remove();
-});
+//   //Вводим название и текст статьи с проверкой на пустоту
+//   const title = prompt("Введите заголовок статьи");
+//   while (!title) {
+//     title = prompt("Введите заголовок статьи");
+//   }
+//   const text = prompt("Введите текст статьи");
+//   while (!title || !text) {
+//     text = prompt("Введите текст статьи");
+//   }
+
+//   // меняем статью в массиве на наши введенные ранее заголовок и текст
+//   article.title = title;
+//   article.text = text;
+
+//   // меняем в массиве бывшую статью на новую
+//   articles[indexArticle] = article;
+//   // обновляем хранилище
+//   localStorage.setItem(localStorageKey, JSON.stringify(articles));
+//   //  теперь надо в Parent elemen(наша статья в html) внести иземения в текст
+// //   conteinerElement.insertAdjacentHTML("beforeend", getArticleHtml(article));
+//   parentElement.innerHTML = getArticleHtml(article);
+// });
+
+// // удаление статей
+// conteinerElement.addEventListener("click", function (event) {
+//   if (!event.target.classList.contains("delete")) {
+//     return;
+//   }
+
+//   const parentElement = event.target.closest(".article");
+//   const id = +parentElement.dataset.id;
+//   const indexArticle = articles.findIndex((article) => article.id === id);
+//   articles.splice(indexArticle, 1);
+
+//   localStorage.setItem(localStorageKey, JSON.stringify(articles));
+//   parentElement.remove();
+// });
+
+
+console.log(typeof null);

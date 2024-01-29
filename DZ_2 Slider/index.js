@@ -18,7 +18,7 @@ const sliderBoxElement = document.querySelector(".sliderBox");
 const navBoxElement = document.querySelector(".navBox");
 // звуки для кнопок
 const audio = new Audio(
-  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/clickUp.mp3"
+  "./sounds/jeleznaya-knopka-vyiklyucheniya1.mp3"
 );
 
 const sliderElementsSourceList = [
